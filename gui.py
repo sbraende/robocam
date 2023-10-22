@@ -1,28 +1,37 @@
 import customtkinter as ctk
+ 
 
-ctk.set_appearance_mode('dark')
-ctk.set_default_color_theme('green')
+def gui():
+    ctk.set_appearance_mode('dark')
+    ctk.set_default_color_theme('green')
 
-root = ctk.CTk()
-root.geometry('500x500')
+    root = ctk.CTk()
+    root.geometry('500x200')
 
-def login():
-    print('test')
+    # Test function
+    def login():
+        print('test')
 
-frame = ctk.CTkFrame(master=root)
-frame.pack(padx=5, pady=5, fill='both', expand=True)
+    # Items
+    label = ctk.CTkLabel(master=root, text='PiCam Controller', font=('Arial',16) )
+    button_top = ctk.CTkButton(master=root, text='Up', command=login)
+    button_left = ctk.CTkButton(master=root, text='Left', command=login)
+    button_right = ctk.CTkButton(master=root, text='Right', command=login)
+    button_bottom = ctk.CTkButton(master=root, text='Down', command=login)
 
-label = ctk.CTkLabel(master=frame, text='Login System')
+    # Layout
+    label.grid(row=0, column=1, columnspan=1, sticky='nsew', padx=5, pady=5)
+    button_top.grid(row=1, column=1, sticky='nsew', padx=5, pady=5)
+    button_bottom.grid(row=2, column=1, sticky='nsew', padx=5, pady=5)
+    button_left.grid(row=2, column=0, sticky='nsew', padx=5, pady=5)
+    button_right.grid(row=2, column=2, sticky='nsew', padx=5, pady=5)
 
-button_top = ctk.CTkButton(master=frame, text="Up", command=login)
+    root.grid_rowconfigure(0, weight=1)
+    root.grid_rowconfigure(1, weight=1)
+    root.grid_rowconfigure(2, weight=1)
+    root.grid_columnconfigure(0, weight=1)
+    root.grid_columnconfigure(1, weight=1)
+    root.grid_columnconfigure(2, weight=1)
 
-button_left = ctk.CTkButton(master=frame, text="Left", command=login)
-
-button_right = ctk.CTkButton(master=frame, text="Right", command=login)
-
-button_bottom = ctk.CTkButton(master=frame, text="Down", command=login)
-
-# Grid layout
-
-
-root.mainloop()
+    root.mainloop()
+gui()
