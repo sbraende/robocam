@@ -1,5 +1,5 @@
 import customtkinter as ctk
- 
+import pantilt
 
 def gui():
     ctk.set_appearance_mode('dark')
@@ -14,7 +14,7 @@ def gui():
 
     # Items
     label = ctk.CTkLabel(master=root, text='PiCam Controller', font=('Arial',16) )
-    button_top = ctk.CTkButton(master=root, text='Up', command=login)
+    button_top = ctk.CTkButton(master=root, text='Up', command=pantilt.move('tilt', -1))
     button_left = ctk.CTkButton(master=root, text='Left', command=login)
     button_right = ctk.CTkButton(master=root, text='Right', command=login)
     button_bottom = ctk.CTkButton(master=root, text='Down', command=login)
@@ -34,4 +34,6 @@ def gui():
     root.grid_columnconfigure(2, weight=1)
 
     root.mainloop()
+
+pantilt.reset()
 gui()
